@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import io from 'socket.io-client';
 
-const socket = io.connect("http://localhost:5000");
+const socket = io.connect("https://psychologicalsupoortsystem-2.onrender.com");
 
 const TherapistDashboard = () => {
     const [flaggedChats, setFlaggedChats] = useState([]);
@@ -23,7 +23,7 @@ const TherapistDashboard = () => {
                     return;
                 }
 
-                const res = await axios.get('http://localhost:5000/api/therapist/flagged', {
+                const res = await axios.get('https://psychologicalsupoortsystem-2.onrender.com/api/therapist/flagged', {
                     headers: { 'x-auth-token': token }
                 });
                 setFlaggedChats(res.data);

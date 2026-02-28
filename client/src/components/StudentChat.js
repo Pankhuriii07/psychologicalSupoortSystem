@@ -3,7 +3,7 @@ import axios from 'axios';
 import io from 'socket.io-client';
 
 // Socket connection component ke bahar bhi reh sakta hai, lekin initialization andar behtar hai
-const socket = io.connect("http://localhost:5000");
+const socket = io.connect("https://psychologicalsupoortsystem-2.onrender.com");
 
 const StudentChat = () => {
     const [input, setInput] = useState('');
@@ -27,7 +27,7 @@ const StudentChat = () => {
 
     useEffect(() => {
     const loadHistory = async () => {
-        const res = await axios.get(`http://localhost:5000/api/chat/${studentId}`);
+        const res = await axios.get(`https://psychologicalsupoortsystem-2.onrender.com/api/chat/${studentId}`);
         setMessages(res.data);
     };
     loadHistory();
@@ -47,7 +47,7 @@ const StudentChat = () => {
         setInput(''); 
 
         try {
-            const res = await axios.post('http://localhost:5000/api/chat', {
+            const res = await axios.post('https://psychologicalsupoortsystem-2.onrender.com/api/chat', {
                 studentId: studentId,
                 message: currentInput
             });

@@ -17,7 +17,7 @@ const Login = () => {
     // Login.js ke handleLogin function ke andar:
     const handleLogin = async (e) => {
     try {
-        const res = await axios.post('http://localhost:5000/api/auth/login', { email, password });
+        const res = await axios.post('https://psychologicalsupoortsystem-2.onrender.com/api/auth/login', { email, password });
 
         // Save token and role
         localStorage.setItem('token', res.data.token);
@@ -44,7 +44,7 @@ const Login = () => {
 
     try {
         const res = await axios.post(
-            'http://localhost:5000/api/auth/login',
+            'https://psychologicalsupoortsystem-2.onrender.com/api/auth/login',
             formData
         );
 
