@@ -17,7 +17,7 @@ const Login = () => {
     // Login.js ke handleLogin function ke andar:
     const handleLogin = async (e) => {
     try {
-        const res = await axios.post('https://psychologicalsupoortsystem-2.onrender.com/api/auth/login', { email, password });
+        const res = await axios.post('http://localhost:5000/api/auth/login', { email, password });
 
         // Save token and role
         localStorage.setItem('token', res.data.token);
@@ -44,7 +44,7 @@ const Login = () => {
 
     try {
         const res = await axios.post(
-            'https://psychologicalsupoortsystem-2.onrender.com/api/auth/login',
+            'http://localhost:5000/api/auth/login',
             formData
         );
 
@@ -73,51 +73,40 @@ const Login = () => {
 };
 
     return (
-  <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 to-indigo-600">
-    <div className="bg-white p-8 rounded-2xl shadow-xl w-96">
-      <h2 className="text-3xl font-bold text-center mb-6 text-gray-800">
-        Login
-      </h2>
-
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          onChange={handleChange}
-          required
-          className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-        />
-
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          onChange={handleChange}
-          required
-          className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-        />
-
-        <button
-          type="submit"
-          className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-300"
-        >
-          Login
-        </button>
-      </form>
-
-      <p className="text-center mt-4 text-gray-600">
-        Don't have an account?{" "}
-        <span
-          className="text-blue-600 cursor-pointer hover:underline"
-          onClick={() => navigate("/register")}
-        >
-          Register
-        </span>
-      </p>
-    </div>
-  </div>
-);
+        <div style={{ maxWidth: '400px', margin: '50px auto', padding: '20px', border: '1px solid #ccc', borderRadius: '8px' }}>
+            <h2 style={{ textAlign: 'center' }}>Login to PSS</h2>
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                <div>
+                    <label>Email:</label>
+                    <input 
+                        type="email" 
+                        name="email" 
+                        placeholder="Enter your email" 
+                        onChange={handleChange} 
+                        required 
+                        style={{ width: '100%', padding: '8px', marginTop: '5px' }}
+                    />
+                </div>
+                <div>
+                    <label>Password:</label>
+                    <input 
+                        type="password" 
+                        name="password" 
+                        placeholder="Enter your password" 
+                        onChange={handleChange} 
+                        required 
+                        style={{ width: '100%', padding: '8px', marginTop: '5px' }}
+                    />
+                </div>
+                <button type="submit" style={{ padding: '10px', backgroundColor: '#007bff', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>
+                    Login
+                </button>
+            </form>
+            <p style={{ marginTop: '15px', textAlign: 'center' }}>
+                Don't have an account? <span style={{ color: 'blue', cursor: 'pointer' }} onClick={() => navigate('/register')}>Register here</span>
+            </p>
+        </div>
+    );
 };
 
 export default Login;
